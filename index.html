@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multiplayer Asteroids</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Countdown logic
+    const launchDate = new Date("2025-05-20T23:59:59Z").getTime();
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+    setInterval(updateCountdown, 1000);
+  </script>
+</head>
+<body class="bg-gray-950 text-white font-sans">
+
+  <!-- Countdown Section (Moved to Top) -->
+  <section class="bg-gray-900 py-4 px-4 text-center">
+    <h2 class="text-xl font-bold text-red-500 mb-1">Game Jam Deadline Countdown:</h2>
+    <p id="countdown" class="text-3xl font-bold text-red-500">Loading...</p>
+  </section>
+
+  <!-- Social Link Section -->
+  <div class="bg-gray-900 text-right px-6 py-3">
+    <a href="#" class="inline-block text-blue-400 hover:text-blue-300 font-medium transition">Follow me on Twitter →</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex flex-col items-center justify-center text-center px-4 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1601582585765-11466d6340e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');">
+    <div class="bg-black bg-opacity-60 p-6 rounded-xl">
+      <h1 class="text-5xl font-bold mb-4">Asteroids, Reinvented — With Friends</h1>
+      <p class="text-xl mb-8 max-w-xl">
+        A modern multiplayer twist on the arcade classic. Jump in and play right in your browser!
+      </p>
+      <div class="flex gap-4 flex-wrap justify-center">
+        <a href="#demo" class="bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-xl text-lg font-medium">Play Demo Now</a>
+        <a href="#signup" class="bg-white text-gray-900 hover:bg-gray-200 px-6 py-3 rounded-xl text-lg font-medium">Reserve Your Username</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gameplay Demo -->
+  <section id="demo" class="bg-gray-900 py-16 px-4 text-center">
+    <h2 class="text-3xl font-semibold mb-6">Live Demo</h2>
+    <div class="w-full max-w-4xl mx-auto aspect-video bg-gray-800 border border-gray-700 rounded-lg flex items-center justify-center">
+      <!-- Replace with your WASM canvas -->
+      <p class="text-gray-400">[ WASM game loads here — embed your canvas or iframe ]</p>
+    </div>
+    <p class="mt-4 text-sm text-gray-400">WASD to move • Space to shoot • Multiplayer beta in progress</p>
+  </section>
+
+  <!-- Signup Section -->
+  <section id="signup" class="bg-gray-950 py-16 px-4 text-center">
+    <h2 class="text-3xl font-semibold mb-4">Reserve Your Spot</h2>
+    <p class="mb-6 text-gray-400">Sign up to get notified at launch and reserve your multiplayer username.</p>
+    <div class="max-w-2xl mx-auto">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd-6E-p1FKdB0yDJxKQ2Xvx6YdDKAvpecpcoS4D0iKGHSmQKw/viewform?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="bg-gray-900 py-16 px-4 text-center">
+    <h2 class="text-3xl font-semibold mb-4">Why This Game?</h2>
+    <p class="max-w-2xl mx-auto text-gray-300 text-lg">
+      I always wanted to play Asteroids with other people. This game reimagines the retro experience in a shared online universe, built for speed and chaos. No downloads. Just jump in and play.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-950 py-8 text-center text-sm text-gray-500">
+    Built by [Your Name] for [Game Jam Name]
+  </footer>
+
+  <script>
+    function handleSignup(event) {
+      event.preventDefault();
+      // Mock signup handler — replace with backend integration
+      const email = document.getElementById("email").value;
+      const username = document.getElementById("username").value;
+      if (email && username) {
+        document.getElementById("signup-msg").classList.remove("hidden");
+      }
+    }
+  </script>
+
+</body>
+</html>
